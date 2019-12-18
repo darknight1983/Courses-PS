@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk'
 import rootReducer from "./Reducers";
 
 // Middleware that will warn us if we accidentally mutate any state in the redux store!
@@ -11,7 +12,7 @@ const configureStore = (initialState) => {
     return createStore(
         rootReducer,
         initialState,
-        composeEnhancers(applyMiddleware(reduxImmutableStateInvariant()))
+        composeEnhancers(applyMiddleware(thunk, reduxImmutableStateInvariant()))
     );
 };
 
