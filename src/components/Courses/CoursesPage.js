@@ -51,6 +51,7 @@ class CoursesPage extends Component {
 }
 
  const mapStateToProps = (state) =>  {
+    console.log(state)
     return {
         courses: state.authors.length === 0 ? [] : state.courses.map(course => {
             return {

@@ -4,9 +4,9 @@ import {
     UPDATE_COURSE_SUCCESS
 } from './ActionTypes';
 import * as courseApi from '../../api/courseApi'
-import { beginApiCall} from "./apiStatusActions";
+import beginApiCall from "./apiStatusActions";
 
-export const LoadCoursesSuccess = (courses) => {
+export const loadCoursesSuccess = (courses) => {
     return {
         type: LOAD_COURSES_SUCCESS,
         courses
@@ -29,10 +29,12 @@ export const createCourseSuccess = (course) => {
 
 // The function below is a Thunk --- Make sure you understand what "thunks" are for.
 export const loadCourses = () => {
-    return dispatch => {
+    return function(dispatch) {
+        debugger
         dispatch(beginApiCall());
         return courseApi.getCourses().then(courses => {
-            dispatch(LoadCoursesSuccess(courses));
+            debugger
+            dispatch(loadCoursesSuccess(courses));
         }).catch(error => {
             throw error;
         })
@@ -41,7 +43,8 @@ export const loadCourses = () => {
 
 // The function below is a Thunk --- Make sure you understand what "thunks" are for.
 export const saveCourse = (course) => {
-    return (dispatch, getState) => {
+    return function(dispatch) {
+        debugger
         dispatch(beginApiCall());
         return courseApi.saveCourse(course).then(savedCourse => {
           course.id

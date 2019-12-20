@@ -1,9 +1,11 @@
-import { BEGIN_API_CALLS } from "./ActionTypes";
+import { BEGIN_API_CALL } from "./ActionTypes";
 
-export const beginApiCall = () => {
+const beginApiCall = () => {
     return {
-        type: BEGIN_API_CALLS,
+        type: BEGIN_API_CALL,
     }
 };
+
+export default beginApiCall;
 
 
